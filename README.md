@@ -29,7 +29,7 @@ Abaixo segue alguns passos sugeridos para criar a aplicação:
 |   2. Layout             |   **sim**   |
 |   3. Button Listeners   |   **sim**   |
 |   4. Avaliar Expressão  |   **sim**   |
-|   5. Alertar inválido   |             |
+|   5. Alertar inválido   |   **sim**   |
 
 ----------
 ## Dificuldades
@@ -38,8 +38,8 @@ Explique de forma resumida as dificuldades que teve e como resolveu.
 
 > Escreva: "não tive dificuldades" se for o caso e apague o resto
 
-1. **Importar biblioteca X**
-   - Não consegui importar a biblioteca X por conta disso e daquilo.
-   - Resolvi fazendo X, Y e Z...
-2. **Avaliação de expressão**
-   - Resolvi implementar minha própria e por não conhecer Kotlin demorei bastante...
+1. **Importar biblioteca mXparser – Math Expressions**
+   - Não sabia como inserir uma lib no projeto quando ela fosse baixada como um
+     arquivos .jar
+   - Resolvi visualizando a documentação da lib
+
