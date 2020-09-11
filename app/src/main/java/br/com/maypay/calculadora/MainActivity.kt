@@ -1,12 +1,12 @@
 package br.com.maypay.calculadora
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import org.mariuszgromada.math.mxparser.Expression
-import kotlin.math.exp
+import java.util.regex.Pattern
 
 
 class MainActivity : AppCompatActivity() {
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         btnDoubleZero.setOnClickListener { writeExpression("00", tvExpression) }
         btnDecimal.setOnClickListener { writeExpression(".", tvExpression) }
 
-        btnPercentage.setOnClickListener { writeExpression("*[%]", tvExpression) }
+        btnPercentage.setOnClickListener { writeExpression("%", tvExpression) }
         btnDivide.setOnClickListener { writeExpression("/", tvExpression) }
         btnMultiply.setOnClickListener { writeExpression("*", tvExpression) }
         btnMinus.setOnClickListener { writeExpression("-", tvExpression) }
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun percentage(value: String, tvExpression: TextView){
-
+        val b = Pattern.matches("a*b", "aaaaab")
     }
 
     fun writeExpression(value: String, tvExpression: TextView) {
@@ -83,11 +83,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showResult(tvExpression: TextView, tvResult: TextView) {
-        val expression = tvExpression.text.toString()
+        var expression = tvExpression.text.toString()
+        expression = expression.replace("%", "*[%]")
         val e = Expression(expression)
         println(expression)
         println(e.calculate().toString())
         val result = e.calculate().toString()
-        tvResult.text = result
+        if (result == "NaN") {
+            tvResult.text = ""
+            val text = "Operação inválida"
+            val duration = Toast.LENGTH_SHORT
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
+
+            println("Operação inválida")
+        } else {
+            tvResult.text = result
+        }
     }
 }
+
+

@@ -14,10 +14,10 @@
     <color name="colorBtnNumberTEXT">#606060</color>
 
     <!-- Operator Buttons -->
-    <color name="colorBtnOperatorBG">#606060</color>
+    <color name="colorBtnOperatorBG">#2B2B2B</color>
     <color name="colorBtnOperatorTEXT">#e2e2e2</color>
 
     <!-- Special Buttons -->
-    <color name="colorBtnSpecialBG">#bf0000</color>
+    <color name="colorBtnSpecialBG">#007CB5</color>
     <color name="colorBtnSpecialTEXT">#e2e2e2</color>
 </resources>
