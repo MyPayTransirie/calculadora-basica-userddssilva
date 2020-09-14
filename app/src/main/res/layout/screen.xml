@@ -10,11 +10,10 @@
         android:id="@+id/tvExpression"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1+2+3+4"
-        android:textSize="30sp"
         android:gravity="right"
         android:padding="6dp"
-        />
+        android:text="1+2+3+4"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvResult"

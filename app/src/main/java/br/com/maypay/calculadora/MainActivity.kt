@@ -1,9 +1,13 @@
 package br.com.maypay.calculadora
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import kotlinx.android.synthetic.main.screen.*
 import kotlinx.android.synthetic.main.simple_cal_buttons.*
 import org.mariuszgromada.math.mxparser.Expression
@@ -11,9 +15,60 @@ import org.mariuszgromada.math.mxparser.Expression
 
 class MainActivity : AppCompatActivity() {
 
+    private var historico = ArrayList<History>()
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu to use in the action bar
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle presses on the action bar menu items
+        when (item.itemId) {
+           /* R.id.action_cut -> {
+                //text_view.text = "Cut"
+                return true
+            }
+            R.id.action_copy -> {
+                //text_view.text = "Copy"
+                return true
+            }
+            R.id.action_paste -> {
+                //text_view.text = "Paste"
+                return true
+            }*/
+            R.id.action_history -> {
+                // instancing an intent
+                var intent = Intent(this, HistActivity::class.java)
+
+                // sending a simple string
+                val title: String = "Histórico"
+                intent.putExtra("Title", title)
+
+                // sending an instance of History class
+                val historic = History("13+4", "17")
+                intent.putExtra("Historic", historic)
+
+                // sending an array of Histories
+                intent.putExtra("Historics", this.historico)
+
+                // start historic activity
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculator_layout)
+
+        val toolbar: Toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
 
         /* Number Buttons */
         btnOne.setOnClickListener { writeExpression("1", tvExpression) }
@@ -60,6 +115,12 @@ class MainActivity : AppCompatActivity() {
         println(expression)
         println(e.calculate().toString())
         val result = e.calculate().toString()
+
+        // saving history
+        var hist = History(expression_calc = expression, result_calc = result)
+        this.historico.add(hist)
+        //---------------------
+
         if (result == "NaN") {
             tvResult.text = ""
             val text = "Operação inválida"

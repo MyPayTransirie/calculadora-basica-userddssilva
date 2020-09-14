@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">Calculadora</string>
 
-<!--    <string name="sqr_root">&#8730;</string>-->
+    <!--    <string name="sqr_root">&#8730;</string>-->
     <string name="sqr_root">sqrt</string>
     <string name="sum_operator">+</string>
     <string name="sub_operator">-</string>
-<!--    <string name="div_operator">&#247;</string>-->
+    <!--    <string name="div_operator">&#247;</string>-->
     <string name="div_operator">/</string>
-<!--    <string name="mut_operator">&#10005;</string>-->
+    <!--    <string name="mut_operator">&#10005;</string>-->
     <string name="mut_operator">*</string>
+    <string name="menu_1">Android</string>
+    <string name="help">Ajudando</string>
+    <string name="file">file</string>
+    <string name="history">Histórico</string>
 </resources>
